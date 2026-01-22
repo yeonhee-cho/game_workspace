@@ -40,7 +40,7 @@ class MainScreen extends StatelessWidget{
                           crossAxisSpacing: 16, // 가로 간격 좌우 아이템 사이의 간격
                           mainAxisSpacing: 16 // 세로 간격 위 아래 아이템 사이의 간격 16px 간격
                         ),
-                        itemCount: games.length, // Grid 를 사용할 때 총 grid로 담아야하는 아이템 총 개수를 지정해주지 않으면 //TODO
+                        itemCount: games.length, // Grid 를 사용할 때 총 grid로 담아야하는 아이템 총 개수를 지정해주지 않으면 그리드는 무한적으로 생성
                         // 데이터가 없는 Grid 까지 생성
 
                         // 각 그리드 컬럼마다 데이터를 index 순서대로 하나씩 GameCard 형태로 담아서 만듦

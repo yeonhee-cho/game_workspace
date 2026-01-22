@@ -18,7 +18,7 @@ class GameAssets {
   아래와 같이 static 으로 되어있는 상수/변수에만 접근 가능
   image: AssetsImage(GameAssets.birdFluffyGround),
   static const String birdFluffyBackground 접근 가능
-  const String abcdefg = "image.png" 비공개 생성자 상태에서 클래스 내부에서만 사용하는 상수 이름이고 // TODO
+  const String abcdefg = "image.png" 비공개 생성자 상태에서 클래스 내부에서만 사용하는 상수 이름이고,
   외부에서 abcdefg 라는 데이터 공간 내부에 존재하는 데이터에 접근 불가
 
   비공개 클래스인데 static 으로 되어있는 상수나 변수 데이터는 사용 ok
