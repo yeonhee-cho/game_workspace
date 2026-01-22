@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:game_workspace/common/app_router.dart';
 import 'package:game_workspace/screens/main_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:game_workspace/providers/game_provider.dart';
+import 'package:game_workspace/providers/bird_fluffy_provider.dart';
 /*
  * main() 함수 작성
  */
@@ -16,18 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => GameProvider(),
+      create: (_) => BirdFluffyProvider(),
 
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          // home: GameScreen(),
-          home: Center(
-            child: Container(
-              // width: 400, // 모바일 가로 크기
-              // height: 800, // 모바일 세로 크기
-              child: const MainScreen(),
-            ),
-          )
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
       ),
     );
   }

@@ -36,8 +36,9 @@ flutter:
 
   assets:
     - assets/images/ #assets 폴더 내부 images 폴더 내의 모든 파일 사용
-
+    - assets/images/bird_fluffy/
   # assets을 추가하면 pub get 으로 반드시 추가된 세팅이 반영될 수 있도록 해주어야 한다.
+
   fonts:
     - family: Pretendard
       fonts:

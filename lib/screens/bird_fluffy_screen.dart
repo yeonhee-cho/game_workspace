@@ -5,19 +5,19 @@ import '../models/game_item.dart';
 import '../widgets/bird_fluffy/game_area_widget.dart';
 import '../widgets/bird_fluffy/ground_widget.dart';
 import '../widgets/bird_fluffy/score_widget.dart';
-import '../providers/game_provider.dart';
+import '../providers/bird_fluffy_provider.dart';
 
 /*
  * lib
  * ├─── main.dart                         # 어플의 시작점
  * ├─── providers/
- * │    └─────── game_provider.dart       # 게임의 두뇌(상태 관리 + 로직)
+ * │    └─────── bird_fluffy_provider.dart       # 게임의 두뇌(상태 관리 + 로직)
  * │                                        - 게임 상태 변수들(새의 위치, 점수, 장애물 위치 등)
  * │                                        - 게임 로직(startGame, jump, 충돌 감지 등)
  * │                                        - 물리 엔진
  * │                                        - ChangeNotifier로 UI 상태 변경 알림
  * ├─── screens/
- * │    └─────── game_screen.dart game_provider.dart        # 전체 화면 레이아웃 관리자
+ * │    └─────── bird_fluffy_screen.dart bird_fluffy_provider.dart        # 전체 화면 레이아웃 관리자
  * │                                        - 탭 제스처 처리(GestureDetector)
  * │                                        - 위젯들을 조합하여 완성된 게임 화면 구성
  * │                                        - Provider 와 UI를 연결하는 중간 다리 역할
@@ -44,7 +44,7 @@ import '../providers/game_provider.dart';
  *                                          - 게임 중 : 점수 표시
  *                                          -  provider 에서 gameStarted 와 score 값 받아옴
  */
-// class GameProvider with ChangeNotifier {
+// class BirdFluffyProvider with ChangeNotifier {
 //   int _score = 0;
 //
 //   int get score => _score;
@@ -73,7 +73,7 @@ class BirdFluffyScreen extends StatelessWidget {
     return Listener(
       onPointerDown: (_){
         // 현재 유저가 꾹 눌렀을 때 게임의 상태 확인
-        final game = context.read<GameProvider>();
+        final game = context.read<BirdFluffyProvider>();
         if(!game.gameStarted) {
           // 게임이 시작되지 않았으면 게임 시작
           game.startGame();
@@ -85,7 +85,7 @@ class BirdFluffyScreen extends StatelessWidget {
 
       onPointerUp: (_) {
         // 현재 유저가 꾹 누르기를 종료했을 때 게임의 상태 확인
-        final game = context.read<GameProvider>();
+        final game = context.read<BirdFluffyProvider>();
         game.stopHolding();
 
         // 점프 실행
@@ -98,7 +98,7 @@ class BirdFluffyScreen extends StatelessWidget {
       // 꾹 누르기 시작 종료
       onLongPressStart: (_){
         // 현재 내가 꾹 눌렀을 때 게임의 상태 확인
-        final game = context.read<GameProvider>();
+        final game = context.read<BirdFluffyProvider>();
         if(game.gameStarted) {
           game.startHolding();
         }
@@ -106,11 +106,11 @@ class BirdFluffyScreen extends StatelessWidget {
       
       onLongPressEnd: (_){
         // 현재 유저가 꾹 누르기를 종료 했을 때 게임의 상태 확인
-        final game = context.read<GameProvider>();
+        final game = context.read<BirdFluffyProvider>();
         game.stopHolding();
       },
       onTap: () {
-        final game = context.read<GameProvider>();
+        final game = context.read<BirdFluffyProvider>();
 
         // 게임이 시작되지 않았으면 startGame() 호출
         if(!game.gameStarted) {
@@ -137,7 +137,7 @@ class BirdFluffyScreen extends StatelessWidget {
         title: const Text('게임 화면'),
         backgroundColor: Colors.purple,
       ),
-      body: Consumer<GameProvider>(
+      body: Consumer<BirdFluffyProvider>(
         child: const Column(
           children: [
             SizedBox(height: 20),

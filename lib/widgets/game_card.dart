@@ -32,17 +32,26 @@ class GameCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 게임 아이콘
-            Icon(
-              game.icon,
-              size: 64,
-              color: Colors.white
-            ),
+            if(game.imageAsset != null)
+              // 게임 이미지
+              Image.asset(
+                game.imageAsset!,
+                width: 64,
+                height: 64,
+                fit: BoxFit.contain
+              ),
+            if(game.icon != null)
+              // 게임 아이콘
+              Icon(
+                game.icon,
+                size: 64,
+                color: Colors.white
+              ),
             const SizedBox(height: 16),
             // 게임 이름
             Text(
                 game.name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.white

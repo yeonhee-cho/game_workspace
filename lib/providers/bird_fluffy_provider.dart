@@ -5,7 +5,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 
-class GameProvider extends ChangeNotifier{
+class BirdFluffyProvider extends ChangeNotifier{
   // ====================== 게임 상태 변수들 ======================
   // 새의 Y축 위치 (-1 :  화면 최상단, 0 : 중앙, 1 : 화면 최하단)
   double birdY = 0;
