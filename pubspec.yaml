@@ -1,0 +1,44 @@
+name: game_workspace
+description: A game_workspace application with Flutter and Spring Boot
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  # 3.0.0 이상 4.0.0 미만만 ok
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.0
+  # go_router 최신 버전 추가
+  go_router: ^17.0.1
+
+  # 6.1.2 이상과 이하 사용 불가, 6.1.2 사용
+  dio: ^5.4.3
+  cupertino_icons: ^1.0.6
+  flutter_dotenv: ^5.1.0
+  web: ^1.1.1
+  webview_flutter: ^4.4.4
+  google_fonts: ^7.1.0
+#  버전은 모르나 모듈을 추가하고 싶을 때 하는 방법
+#  flutter pub add 모듈이름
+#  flutter pub get 자동으로 실행
+#  flutter pub remove 모듈이름 → 필요없을 경우 제거 기능
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/ #assets 폴더 내부 images 폴더 내의 모든 파일 사용
+
+  # assets을 추가하면 pub get 으로 반드시 추가된 세팅이 반영될 수 있도록 해주어야 한다.
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/PretendardVariable.ttf
