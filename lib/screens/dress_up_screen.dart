@@ -65,21 +65,99 @@ class DressUpScreen extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // 카테고리 버튼 헤어
+                      _categoryButton(provider, 0, '헤어'),
+
                       // 카테고리 버튼 상의
+                      _categoryButton(provider, 1, '상의'),
+
                       // 카테고리 버튼 하의
+                      _categoryButton(provider, 2, '하의'),
+
                       // 카테고리 버튼 신발
+                      _categoryButton(provider, 3, '신발'),
+
                       // 카테고리 버튼 악세사리
+                      _categoryButton(provider, 4, '악세사리'),
                     ],
                   ),
-                )
+                ),
 
                 // 해제 버튼
 
                 // 아이템 그리드(아이템 창)
+                _buildItemGrid(provider),
               ],
             );
           }
       ),
+    );
+  }
+
+  // 카테고리 버튼 추후 widgets/dress_up으로 분리
+  Widget _categoryButton(DressUpProvider provider, int index, String label) {
+    final selected = provider.category == index;
+
+    // GestureDetector -> onTap
+    return GestureDetector(
+      onTap: () => provider.selectCategory(index),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        decoration: BoxDecoration(
+          color: selected ? Colors.pink : Colors.white,
+          borderRadius: BorderRadius.circular(20)
+        ),
+        child: Text(
+          label,
+          style: TextStyle(color: selected ? Colors.white : Colors.black),
+        ),
+      ),
+    );
+  }
+
+  // 아이템 창, 아이템 선택 해제가 가능한 창
+  Widget _buildItemGrid(DressUpProvider provider) {
+    return Expanded(
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10
+            ),
+            itemCount: provider.items.length,
+            itemBuilder: (context, index) {
+              final item = provider.items[index];
+              final selected = provider.isEquipped(item);
+
+              return GestureDetector(
+                onTap: () => provider.selectItem(item),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: selected ? Colors.pink : Colors.grey.shade300,
+                      width: selected ? 3 : 1
+                    )
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: item.color,
+                          borderRadius: BorderRadius.circular(10)
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Text(item.name)
+                    ],
+                  ),
+                ),
+              );
+            }
+        )
     );
   }
 }

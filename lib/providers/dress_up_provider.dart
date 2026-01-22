@@ -36,6 +36,7 @@ class DressUpProvider extends ChangeNotifier {
   // 아이템 착용
   void selectItem(ClothingItem item) {
     equipped[item.type] = item;
+    notifyListeners();
   }
 
   // 현재 카테고리 아이템 해제

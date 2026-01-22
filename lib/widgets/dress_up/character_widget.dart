@@ -24,6 +24,7 @@ class CharacterWidget extends StatelessWidget {
           _buildHead(),
 
           // 헤어 (장착시)
+          if(equippend[0] != null) _buildHair(),
           // 상의 (장착시)
           // 하의 (장착시)
           // 신발 (장착시)
@@ -63,6 +64,24 @@ class CharacterWidget extends StatelessWidget {
             shape: BoxShape.circle
         ),
       )
+    );
+  }
+
+  // 헤어
+  Widget _buildHair() {
+    return Positioned(
+        top: 30,
+        left: 45,
+        child: Container(
+          width: 100,
+          height: 80,
+          decoration: BoxDecoration(
+              color: equippend[0]!.color,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(55)
+              )
+          ),
+        )
     );
   }
 }
