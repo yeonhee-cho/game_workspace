@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:game_workspace/screens/main_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:game_workspace/providers/game_provider.dart';
-import 'package:game_workspace/screens/game_screen.dart';
 /*
  * main() 함수 작성
  */
