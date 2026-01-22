@@ -14,16 +14,22 @@ class GameService {
           // icon: Icons.flight
       ),
       GameItem(
-          id: 'shooter',
-          name: '슈팅',
+          id: 'dressUp',
+          name: '옷 입히기',
           color: Colors.red,
           icon: Icons.gps_fixed
       ),
+      // GameItem(
+      //     id: 'shooter',
+      //     name: '슈팅',
+      //     color: Colors.red,
+      //     icon: Icons.gps_fixed
+      // ),
       GameItem(
           id: 'racing',
           name: '레이싱',
           color: Colors.yellow.shade700,
-          icon: Icons.gps_fixed
+          icon: Icons.flight
       ),
       GameItem(
           id: 'puzzle',

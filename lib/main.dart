@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_workspace/common/app_router.dart';
+import 'package:game_workspace/providers/dress_up_provider.dart';
 import 'package:game_workspace/screens/main_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:game_workspace/providers/bird_fluffy_provider.dart';
@@ -16,12 +17,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => BirdFluffyProvider()),
+          ChangeNotifierProvider(create: (_) => DressUpProvider()),
+        ],
+        child: MaterialApp.router(
+          routerConfig: AppRouter.router,
+        ),
+      );
+    /*
+    // 하나만 불러올 때
+    ChangeNotifierProvider(
       create: (_) => BirdFluffyProvider(),
 
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
       ),
     );
+    */
   }
 }

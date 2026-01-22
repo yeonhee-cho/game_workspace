@@ -12,7 +12,7 @@ class GameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       // 게임 카드를 클릭했을 때 해당 게임 화면으로 이동
-      onTap: () => context.push('/game/${game.id}', extra: game),
+      onTap: () => context.push('/${game.id}', extra: game),
       child: Container(
         decoration: BoxDecoration(
           // 게임 카드 배경색
