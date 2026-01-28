@@ -39,11 +39,17 @@ class GameService {
           icon: Icons.extension
       ),
       GameItem(
-          id: 'arcade',
-          name: '아케이드',
+          id: 'users',
+          name: '유저 리스트',
           color: Colors.green,
-          icon: Icons.sports_esports
+          icon: Icons.person_outline
       ),
+      // GameItem(
+      //     id: 'arcade',
+      //     name: '아케이드',
+      //     color: Colors.green,
+      //     icon: Icons.sports_esports
+      // ),
       GameItem(
           id: 'adventure',
           name: '어드벤처',

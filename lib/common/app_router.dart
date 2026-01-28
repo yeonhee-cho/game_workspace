@@ -1,6 +1,9 @@
 import 'package:game_workspace/screens/bird_fluffy_screen.dart';
+import 'package:game_workspace/screens/calendar_screen.dart';
+import 'package:game_workspace/screens/chat_screen.dart';
 import 'package:game_workspace/screens/dress_up_screen.dart';
 import 'package:game_workspace/screens/main_screen.dart';
+import 'package:game_workspace/screens/user_list_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/game_item.dart';
@@ -34,6 +37,24 @@ class AppRouter {
           builder: (context, state) {
             final game = state.extra as GameItem?;
             return DressUpScreen(gameId: 'dressUp', gameItem: game);
+          }
+      ),
+      GoRoute(
+          path: '/chat', name: 'chat',
+          builder: (context, state) => ChatScreen()
+      ),
+      GoRoute(
+          path: '/calendar',
+          builder: (context, state) {
+            final thisDate = state.extra as GameItem?;
+            return CalendarScreen(gameId: 'calendar', gameItem: thisDate);
+          }
+      ),
+      GoRoute(
+          path: '/users',
+          builder: (context, state) {
+            final thisDate = state.extra as GameItem?;
+            return UserListScreen(gameId: 'users', gameItem: thisDate);
           }
       ),
       /*
