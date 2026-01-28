@@ -34,11 +34,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  # assets 내부에서 사용하고자 하는 폴더가 따로 존재한다면 폴더별로 사용하겠다 처리
+  # 그래도 안될 경우 flutter clean 해주고 다시 pub get 후 실행
   assets:
     - assets/images/ #assets 폴더 내부 images 폴더 내의 모든 파일 사용
     - assets/images/bird_fluffy/
+    - assets/images/dress_up/
   # assets을 추가하면 pub get 으로 반드시 추가된 세팅이 반영될 수 있도록 해주어야 한다.
-
+  # assets 전체를 사용하고 싶다면 assets/ 폴더만 pub get
   fonts:
     - family: Pretendard
       fonts:

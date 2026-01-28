@@ -43,7 +43,8 @@ class DressUpScreen extends StatelessWidget{
       ),
       body: Consumer<DressUpProvider>(
           builder: (context, provider, child) {
-            final categories = ['헤어', '상의', '하의', '신발', '악세사리'];
+            // final categories = ['헤어', '상의', '하의', '신발', '악세사리'];
+            final categories = ['헤어', '상의', '가방', '신발', '무기'];
             return Column(
               children: [
                 // 캐릭터 영역
@@ -52,7 +53,7 @@ class DressUpScreen extends StatelessWidget{
                     color: Color(0xFFFFF0F5),
                     child: Center(
                       child: CharacterWidget(
-                          equippend: provider.equipped
+                          equipped: provider.equipped
                       ),
                     ),
                   )
@@ -63,6 +64,22 @@ class DressUpScreen extends StatelessWidget{
                   padding: EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    // children: [
+                    //   // 카테고리 버튼 헤어
+                    //   _categoryButton(provider, 0, '헤어'),
+                    //
+                    //   // 카테고리 버튼 상의
+                    //   _categoryButton(provider, 1, '상의'),
+                    //
+                    //   // 카테고리 버튼 하의
+                    //   _categoryButton(provider, 2, '하의'),
+                    //
+                    //   // 카테고리 버튼 신발
+                    //   _categoryButton(provider, 3, '신발'),
+                    //
+                    //   // 카테고리 버튼 악세사리
+                    //   _categoryButton(provider, 4, '악세사리'),
+                    // ],
                     children: [
                       // 카테고리 버튼 헤어
                       _categoryButton(provider, 0, '헤어'),
@@ -70,14 +87,14 @@ class DressUpScreen extends StatelessWidget{
                       // 카테고리 버튼 상의
                       _categoryButton(provider, 1, '상의'),
 
-                      // 카테고리 버튼 하의
-                      _categoryButton(provider, 2, '하의'),
+                      // 카테고리 버튼 가방
+                      _categoryButton(provider, 2, '가방'),
 
                       // 카테고리 버튼 신발
                       _categoryButton(provider, 3, '신발'),
 
-                      // 카테고리 버튼 악세사리
-                      _categoryButton(provider, 4, '악세사리'),
+                      // 카테고리 버튼 무기
+                      _categoryButton(provider, 4, '무기'),
                     ],
                   ),
                 ),
@@ -142,14 +159,15 @@ class DressUpScreen extends StatelessWidget{
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: item.color,
-                          borderRadius: BorderRadius.circular(10)
-                        ),
-                      ),
+                      // Container(
+                      //   width: 50,
+                      //   height: 50,
+                      //   decoration: BoxDecoration(
+                      //     color: item.color,
+                      //     borderRadius: BorderRadius.circular(10)
+                      //   ),
+                      // ),
+                      Image.asset(item.imageAssets,width: 50,height: 50,fit: BoxFit.contain),
                       SizedBox(height: 16),
                       Text(item.name)
                     ],

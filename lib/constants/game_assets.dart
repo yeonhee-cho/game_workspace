@@ -24,12 +24,34 @@ class GameAssets {
   비공개 클래스인데 static 으로 되어있는 상수나 변수 데이터는 사용 ok
   */
   // static const String birdFluffy = "";
+  /* ******************** 새 충돌 피하기 게임 에셋 ******************** */
   // 배경이미지 상 하
   static const String birdFluffyBackground = "assets/images/bird_fluffy/background.png";
   static const String birdFluffyGround = "assets/images/bird_fluffy/ground.png";
+
   // 새 이미지
   static const String birdFluffyFlyBird = "assets/images/bird_fluffy/fly_bird.gif";
   static const String birdFluffyLoading = "assets/images/bird_fluffy/bird_loading.png";
   static const String birdFluffyBarrierTop = "assets/images/bird_fluffy/barrier_vertical_top.png";
   static const String birdFluffyBarrierBottom = "assets/images/bird_fluffy/barrier_vertical_bottom.png";
+
+
+  /* ******************** 캐릭터 꾸미기 게임 에셋 ******************** */
+  // 로고
+  static const String dressUpLogo = "assets/images/dress_up/logo.png";
+  // 배경이미지
+  static const String dressUpBackground = "assets/images/dress_up/background.png";
+
+  // 캐릭터 이미지
+  static const String dressUpBody = "assets/images/dress_up/body.png";
+  // 옷 이미지
+  static const String dressUpClothes1 = "assets/images/dress_up/clothes1.png";
+  // 모자이미지
+  static const String dressUpHat1 = "assets/images/dress_up/hat1.png";
+  // 가방이미지
+  static const String dressUpBag1 = "assets/images/dress_up/bag1.png";
+  // 신발 이미지
+  static const String dressUpShoes1 = "assets/images/dress_up/shoes1.png";
+  // 악세사리 이미지
+  static const String dressUpAcc1 = "assets/images/dress_up/acc1.png";
 }
