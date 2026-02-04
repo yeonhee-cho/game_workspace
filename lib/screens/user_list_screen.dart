@@ -37,10 +37,13 @@ class _UserListScreenState extends State<UserListScreen> {
     setState(() => isLoading = true);
 
     try {
-      final result = await UserService.getAllUsers(); // 백엔드에서 데이터를 가져오기
+      // getAllUsers 가 static 이 아닐 경우
+      // 인스턴스 생성하여 userService 사용
+      final userService = UserService();
+      final result = await userService.getAllUsers(); // 백엔드에서 데이터를 가져오기
       // 데이터 성공적으로 가져왔다면 UI 상태 변경 진행
       setState(() {
-        // result 변수에서 작동한 결과 모델과 users 변수 에서 선언한 모델 타입이  //TODO
+        // result 변수에서 작동한 결과 모델과 users 변수 에서 선언한 모델 타입이 일치하는지 반드시 확인
         users = result; // 유저 정보에 백엔드에서 가져온 결과 데이터로 변경 처리
         isLoading = false;// 로딩 해지
       });
@@ -60,7 +63,7 @@ class _UserListScreenState extends State<UserListScreen> {
       ),
       body: isLoading
         ? const Center(child: CircularProgressIndicator())
-          : users.isEmpty // 로딩상태는 아니지만 로딩 결과 존재하는 유저가 없을 때
+            : users.isEmpty // 로딩상태는 아니지만 로딩 결과 존재하는 유저가 없을 때
         ? const Center(child: Text("사용자가 없습니다."))
           : ListView.builder( // ListView 목록을 DB에서 가져와서 만들 때는
         itemCount: users.length, // 반드기 DB에서 조회되는 총 데이터의 개수를 ui에 알려주기
@@ -78,7 +81,7 @@ class _UserListScreenState extends State<UserListScreen> {
                 // String? profileImageUrl,
                 // import 'package:game_workspace/models/User.dart';
                 // model 작성되어있는 경로나 클래스 명칭이 다르다면 문제 발생
-                // 이미지가 존재하지 않을 경우, 대체할 기본 이미지 assets 에 추가 후 '' 에셋 //TODO
+                // 이미지가 존재하지 않을 경우, 대체할 기본 이미지 assets 에 추가 후 '' 에셋 경로 이미지 넣어주기
                 backgroundImage: NetworkImage(user.profileImageUrl ?? ''),
               ),
 
@@ -87,7 +90,7 @@ class _UserListScreenState extends State<UserListScreen> {
               trailing: const Icon(Icons.arrow_forward_ios),
               // 클릭하면 프로필 화면으로 이동
               onTap: () {
-                context.go('/users/${user.userId}', extra: user);
+                context.go('/profile/${user.userId}', extra: user);
               }
             ),
           );

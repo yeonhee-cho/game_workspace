@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:game_workspace/common/constants.dart';
 
@@ -13,7 +15,7 @@ class UserService {
   );
 
   // 1. 모든 사용자 가져오기
-  static Future<List<User>> getAllUsers() async {
+  Future<List<User>> getAllUsers() async {
     try {
       final response = await _dio.get("/users");
       final List<dynamic> data = response.data;
@@ -35,9 +37,9 @@ class UserService {
   // User?를 넣어주어 데이터가 없을 경우 null 형태로 데이터 결과를 사용하겠다.
   // A value of type 'Null' can't be returned from the method 'getUserById' because it has a return type of 'Future<User>'.
   // -> Future<User?> 넣어줌
-  static Future<User?> getUserById() async {
+  Future<User?> getUserById(String userId) async {
     try {
-      final response = await _dio.get("/users");
+      final response = await _dio.get("/users/$userId");
 
       // JSON을 User 객체로 변환
       return User.fromJson(response.data);
@@ -45,6 +47,39 @@ class UserService {
       // controller 에서 조회한 데이터가 없을 수도 있고, 서버 연결 실패할 수 있다.
       print("사용자 목록 조회 실패 : $e");
       return null;
+    }
+  }
+  /* 프로필 이미지 업데이트 */
+  Future<String?> uploadProfileImage(String userId, File imageFile) async {
+    try {
+      String fileName = imageFile.path.split('/').last; // 파일이름이 시작되는 / 부터 끝까지 확인하여 파일이름 가져오겠다.
+      FormData formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(
+          imageFile.path,
+          filename: fileName
+        )
+      });
+
+      final response = await _dio.post('/users/$userId/profile-image', data: formData);
+
+      if(response.statusCode == 200) {
+        return response.data['profileImageUrl'];
+      }
+      return null;
+    } catch (e) {
+      print('프로필 이미지 업로드 실패 $e');
+      return null;
+    }
+  }
+
+  // 새 사용자 생성
+  Future<bool> createUser(User user) async {
+    try {
+      final response = await _dio.post('/users', data: user.toJson());
+      return response.statusCode == 200;
+    } catch (e) {
+      print('사용자 생성 실패 $e');
+      return false;
     }
   }
 }

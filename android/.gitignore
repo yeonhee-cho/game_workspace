@@ -12,3 +12,8 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# 키스토어 관련 파일 제외 - 푸시 방지
+android/key.properties
+android/*.jks
+*.jks

@@ -3,6 +3,7 @@ import 'package:game_workspace/screens/calendar_screen.dart';
 import 'package:game_workspace/screens/chat_screen.dart';
 import 'package:game_workspace/screens/dress_up_screen.dart';
 import 'package:game_workspace/screens/main_screen.dart';
+import 'package:game_workspace/screens/profile_screen.dart';
 import 'package:game_workspace/screens/user_list_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,6 +56,14 @@ class AppRouter {
           builder: (context, state) {
             final thisDate = state.extra as GameItem?;
             return UserListScreen(gameId: 'users', gameItem: thisDate);
+          }
+      ),
+      // 프로필 화면 -> 프론트용 주소, 백엔드 소통 아님!!
+      GoRoute(
+          path: '/profile/:userId',
+          builder: (context, state) {
+            final userId = state.pathParameters['userId'];
+            return ProfileScreen(userId: userId);
           }
       ),
       /*
