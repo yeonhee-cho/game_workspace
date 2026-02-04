@@ -10,6 +10,7 @@ class ApiConstants {
 
   // todosUrl 상수 정의하기
   static const String todosUrl = '/todos';
+  static const String chatUrl = '/chat';
 }
 
 /*

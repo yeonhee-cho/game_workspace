@@ -46,7 +46,7 @@ class CalendarScreen extends StatelessWidget{
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // 나중에 채울 거예요
+          // 나중에 채울 거에요
         },
         child: const Icon(Icons.add),
       ),

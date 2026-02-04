@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 // json 인코딩 디코딩 기능 제공
 // -> 주소로 데이터 주고받을 때 문자열로 변환
@@ -125,8 +126,8 @@ class ChatService {
 
  */
 }
+*/
 
-/*
 class ChatService {
   // 간단한 QnA 데이터베이스
   static final Map<String, String> _qnaDatabase = {
@@ -224,4 +225,3 @@ class ChatService {
     return responses[DateTime.now().millisecond % responses.length];
   }
 }
-*/

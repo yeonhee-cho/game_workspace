@@ -70,66 +70,72 @@ class BirdFluffyScreen extends StatelessWidget {
     // Listener = 마우스 클릭과 터치 동시 제공
     // onPointerDown = 터치하거나 클릭하거나
     // onPointerUp = 터치를 멈추거나 클릭을 멈추거나
-    return Listener(
-      onPointerDown: (_){
-        // 현재 유저가 꾹 눌렀을 때 게임의 상태 확인
-        final game = context.read<BirdFluffyProvider>();
-        if(!game.gameStarted) {
-          // 게임이 시작되지 않았으면 게임 시작
-          game.startGame();
-        } else {
-          // 게임 중이면 꾹 누르기 시작
-          game.startHolding();
-        }
-      },
-
-      onPointerUp: (_) {
-        // 현재 유저가 꾹 누르기를 종료했을 때 게임의 상태 확인
-        final game = context.read<BirdFluffyProvider>();
-        game.stopHolding();
-
-        // 점프 실행
-        if(game.gameStarted) {
-          game.jump();
-          // game.startGame();
-        }
-      },
-      /*
-      // 꾹 누르기 시작 종료
-      onLongPressStart: (_){
-        // 현재 내가 꾹 눌렀을 때 게임의 상태 확인
-        final game = context.read<BirdFluffyProvider>();
-        if(game.gameStarted) {
-          game.startHolding();
-        }
-      },
-      
-      onLongPressEnd: (_){
-        // 현재 유저가 꾹 누르기를 종료 했을 때 게임의 상태 확인
-        final game = context.read<BirdFluffyProvider>();
-        game.stopHolding();
-      },
-      onTap: () {
-        final game = context.read<BirdFluffyProvider>();
-
-        // 게임이 시작되지 않았으면 startGame() 호출
-        if(!game.gameStarted) {
-          game.startGame();
-        }
-
-        // jump() 호출
-        game.jump();
-      },
-      */
-      child: const Scaffold(
-        body: Column(
-          children: [
-            ScoreWidget(),
-            GameArea(),
-            GroundWidget()
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("새 충돌 피하기"),
+        backgroundColor: Colors.white,
       ),
+      body: Listener(
+        onPointerDown: (_){
+          // 현재 유저가 꾹 눌렀을 때 게임의 상태 확인
+          final game = context.read<BirdFluffyProvider>();
+          if(!game.gameStarted) {
+            // 게임이 시작되지 않았으면 게임 시작
+            game.startGame();
+          } else {
+            // 게임 중이면 꾹 누르기 시작
+            game.startHolding();
+          }
+        },
+
+        onPointerUp: (_) {
+          // 현재 유저가 꾹 누르기를 종료했을 때 게임의 상태 확인
+          final game = context.read<BirdFluffyProvider>();
+          game.stopHolding();
+
+          // 점프 실행
+          if(game.gameStarted) {
+            game.jump();
+            // game.startGame();
+          }
+        },
+        /*
+        // 꾹 누르기 시작 종료
+        onLongPressStart: (_){
+          // 현재 내가 꾹 눌렀을 때 게임의 상태 확인
+          final game = context.read<BirdFluffyProvider>();
+          if(game.gameStarted) {
+            game.startHolding();
+          }
+        },
+
+        onLongPressEnd: (_){
+          // 현재 유저가 꾹 누르기를 종료 했을 때 게임의 상태 확인
+          final game = context.read<BirdFluffyProvider>();
+          game.stopHolding();
+        },
+        onTap: () {
+          final game = context.read<BirdFluffyProvider>();
+
+          // 게임이 시작되지 않았으면 startGame() 호출
+          if(!game.gameStarted) {
+            game.startGame();
+          }
+
+          // jump() 호출
+          game.jump();
+        },
+        */
+        child: const Scaffold(
+          body: Column(
+            children: [
+              ScoreWidget(),
+              GameArea(),
+              GroundWidget()
+            ],
+          ),
+        ),
+      )
     );
       /*
     return Scaffold(

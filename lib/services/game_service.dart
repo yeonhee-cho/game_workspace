@@ -18,7 +18,6 @@ class GameService {
           name: '옷 입히기',
           color: Colors.red,
           imageAsset: GameAssets.dressUpLogo
-          // icon: Icons.gps_fixed
       ),
       // GameItem(
       //     id: 'shooter',
@@ -42,7 +41,7 @@ class GameService {
           id: 'users',
           name: '유저 리스트',
           color: Colors.green,
-          icon: Icons.person_outline
+          icon: Icons.person_outline_rounded
       ),
       // GameItem(
       //     id: 'arcade',
@@ -50,11 +49,16 @@ class GameService {
       //     color: Colors.green,
       //     icon: Icons.sports_esports
       // ),
-      GameItem(
-          id: 'adventure',
-          name: '어드벤처',
+      // GameItem(
+      //     id: 'adventure',
+      //     name: '어드벤처',
+      //     color: Colors.pink,
+      //     icon: Icons.explore
+      // ),
+      GameItem(id: 'calendar',
+          name: '캘린더',
           color: Colors.pink,
-          icon: Icons.explore
+          icon: Icons.calendar_month_rounded
       ),
     ];
   }
