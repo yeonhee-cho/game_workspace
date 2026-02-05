@@ -1,4 +1,4 @@
-/*
+
 import 'dart:convert';
 // json 인코딩 디코딩 기능 제공
 // -> 주소로 데이터 주고받을 때 문자열로 변환
@@ -15,11 +15,12 @@ class ChatService {
 
   // static 으로 지정하는 상수는 클래스 레벨의 상수로 인스턴스 생성없이 사용 가능
   // 객체를 만들지않고, 모두가 apiKey 사용할 수 있음 / 비공개 처리가 아니기 때문에 어디서든지 접근 가능
-  static const String apiKey = "        ";
+  static const String apiKey = "AIzaSyDtpK7t4dAkiF0hNrSzE-pANB9sea3A29s";
   // gemini API 사용할 모델 이름                                                         모델명   : 콘텐츠생성으로 사용
   // static const String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
   // static const String apiUrl = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent";
-  static const String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+  // static const String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"; // gemini-2.5-flash:generateContent 뒤에 바꿔서 사용
+  static const String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent";
 
   //     비동기 함수 미래에 String 결과 반환
   //                                      메세지       키 데이터 형태의 목록들   이전 대화 내역 리스트
@@ -114,7 +115,7 @@ class ChatService {
     )
   );
 
-
+  // 메세지 보내기
   static Future<ChatResponse> sendMessage(ChatRequest request) async {
 
       // dio post /message
@@ -124,10 +125,11 @@ class ChatService {
       return ChatResponse.fromJson(res.data);
     }
 
+  // 방만들기 원한다면 추가해주기!!
  */
 }
-*/
 
+/*
 class ChatService {
   // 간단한 QnA 데이터베이스
   static final Map<String, String> _qnaDatabase = {
@@ -225,3 +227,4 @@ class ChatService {
     return responses[DateTime.now().millisecond % responses.length];
   }
 }
+*/
